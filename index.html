@@ -1,0 +1,614 @@
+<!-- 
+  Project: NavTarang Web Application
+  Uploaded: Thursday, 24 October 2024
+  Author: R Doondi Gangadhar
+  Contributors: K Hrudayesh reddy, R Sanjay
+  version: 1.0
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NavTarang</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #ffcc00; /* Bright yellow background */
+        }
+
+        #aboutus {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 30px auto;
+            max-width: 900px;
+            padding: 30px;
+            border-radius: 12px;            
+        }
+        
+        #aboutus h2 {
+            font-size: 45px;
+            color: #ffdd33; /* Bright yellow for heading */
+            margin-bottom: 40px;
+            padding-right: 10px;
+                }
+    
+            #aboutus ul {
+                padding: 0;              /* Remove default padding */
+                list-style: none;        /* Remove default bullet points */
+            }
+
+            #aboutus li {
+                position: relative;      /* Position for the pseudo-element */
+                padding-left: 25px;     /* Space for the checkmark */
+                margin-bottom: 10px;     /* Space between list items */
+            }
+
+            #aboutus li::before {
+                content: '✔';            /* Checkmark symbol */
+                position: absolute;      /* Position absolutely */
+                left: 0;                /* Align to the left */
+                color: #ffcc00;         /* Set checkmark color */
+                font-size: 18px;        /* Adjust size if needed */
+            }
+
+
+
+        .about-image {
+            flex: 1; /* 50% of the width */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 20px; /* Space between image and text */
+        }
+
+        .about-image img {
+            max-width: 100%; /* Scale the image to fit */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 12px;
+        }
+
+        .about-text {
+            flex: 1; /* 50% of the width */
+            padding-left: 20px; /* Space between image and text */
+        }
+
+        .about-text p {
+            color: #fbd53b;
+            text-align: left;
+        }
+
+        .about-text ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .about-text ul li {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        
+        /* Custom Fonts */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1f1f1f;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            z-index: 3;
+        }
+
+        nav .logo img {
+            width: 200px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        nav .nav-links li {
+            margin-left: 20px;
+        }
+
+        nav .nav-links li a {
+            color: #f2f200; /* Yellow link color */
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        nav .btn {
+            background-color: #ffdd33; /* Light yellow button */
+            padding: 10px 20px;
+            color: #1f1f1f; /* Dark background for contrast */
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        nav .btn:hover {
+            background-color: #ffd700; /* Darker yellow on hover */
+        }
+
+        /* Header Section */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            color: #f2f200; /* Yellow heading */
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #ddd; /* Light grey for contrast */
+            letter-spacing: 1px;
+        }
+
+        /* Animated Background */
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(30,30,30,1) 0%, rgba(0,0,0,1) 100%);
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-background::before, .animated-background::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: url('logistics-network-pattern.png') repeat;
+            opacity: 0.05;
+            animation: moveBackground 30s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(100px, 100px) scale(1.2);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* Floating Dots Background Animation */
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 221, 51, 0.7); /* Yellow shade */
+            animation: float 8s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Create multiple dots */
+        .dot:nth-child(1) { width: 15px; height: 15px; top: 10%; left: 15%; animation-duration: 6s; }
+        .dot:nth-child(2) { width: 20px; height: 20px; top: 30%; left: 40%; animation-duration: 8s; }
+        .dot:nth-child(3) { width: 10px; height: 10px; top: 60%; left: 25%; animation-duration: 5s; }
+        .dot:nth-child(4) { width: 25px; height: 25px; top: 40%; left: 70%; animation-duration: 7s; }
+        .dot:nth-child(5) { width: 18px; height: 18px; top: 20%; left: 85%; animation-duration: 9s; }
+        .dot:nth-child(6) { width: 22px; height: 22px; top: 50%; left: 10%; animation-duration: 8s; }
+        .dot:nth-child(7) { width: 12px; height: 12px; top: 80%; left: 30%; animation-duration: 7s; }
+        .dot:nth-child(8) { width: 14px; height: 14px; top: 70%; left: 50%; animation-duration: 6s; }
+        .dot:nth-child(9) { width: 20px; height: 20px; top: 90%; left: 80%; animation-duration: 8s; }
+        .dot:nth-child(10) { width: 16px; height: 16px; top: 10%; left: 90%; animation-duration: 9s; }
+
+        /* Floating Icons */
+        .floating-icon {
+            position: absolute;
+            opacity: 0.5;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Specific Transport Icons */
+        .icon1 { top: 50%; left: 20%; animation-duration: 12s; }
+        .icon2 { top: 50%; left: 70%; animation-duration: 15s; }
+        .icon3 { top: 50%; left: 30%; animation-duration: 18s; }
+
+        /* Services Section */
+        section {
+            padding: 60px 0;
+        }
+
+        #services {
+            text-align: center;
+        }
+
+        #services h2 {
+            font-size: 36px;
+            color: #ffdd33; /* Bright yellow for heading */
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .service {
+            width: 30%;
+        }
+
+        .service img {
+            width: 350px;
+            margin-bottom: 30px;
+        }
+
+        .service h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #f2f200; /* Yellow service title */
+        }
+
+        .service p {
+            font-size: 16px;
+            color: #ffe600; /* Lighter yellow for description */
+        }
+
+        .service {
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.service:hover {
+    background-color:transparent;
+}
+
+.service-icon {
+    width: 100px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service:hover .service-icon {
+    transform: scale(1.2);
+}
+
+
+
+
+        /* Contact Section */
+        #contact h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #ffdd33; /* Bright yellow for heading */
+        }
+        #contact p {
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: 14px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white; /* Bright yellow for heading */
+        }
+
+    
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form textarea {
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            background-color: #2f2f2f;
+            color: #fff;
+        }
+
+        form input::placeholder, form textarea::placeholder {
+            color: #888;
+        }
+
+        form button {
+            padding: 15px;
+            background-color: #ffdd33; /* Bright yellow for button */
+            color: #1f1f1f; /* Dark text for contrast */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f1f1f;
+            padding: 20px 0;
+            text-align: center;
+            color: #f2f200; /* Yellow text */
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ffdd33;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* About Us Section */
+        #about-us {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #2b2b2b;
+            color: #f2f200; /* Yellow text for titles */
+        }
+
+        #about-us h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        #about-us p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #ddd; /* Light grey for contrast */
+            line-height: 1.8;
+        }
+
+        .hidden {
+    display: none;
+}
+
+#successMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#successMessage.show {
+    display: block;
+    opacity: 1;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="NavTarang.png" alt="NavTarang Logo" title="NavTarang Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="">Home</a></li>
+            <li><a href="#services">Features</a></li>
+            <li><a href="#aboutus">About Us</a></li>
+            <li><a href="#contact">References</a></li>
+        </ul>
+        <a href="demo.html" class="btn">Demo</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="hero">
+            <h1>Welcome to NavTarang</h1>
+            <p>Experience the future of audio clarity with NavTarang.</p>
+        </div>
+        <!-- Background and floating elements -->
+        <div class="animated-background"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </header>
+
+   <!-- Features Section --> 
+   <section id="services">
+    <h2>Features</h2>
+    <div class="services-grid">
+        <div class="service">
+            <img src="icon1.png" alt="Top-Down Attention" class="service-icon">
+            <h3>Top-Down Attention</h3>
+            <p>Focuses on target speech in mixed audio for effective separation.</p>
+        </div>
+        <div class="service">
+            <img src="icon2.png" alt="Encoder-Decoder Structure" class="service-icon">
+            <h3>Encoder-Decoder Structure</h3>
+            <p>Compresses audio features and reconstructs separated speech efficiently.</p>
+        </div>
+        <div class="service">
+            <img src="icon3.png" alt="Real-Time Processing" class="service-icon">
+            <h3>Real-Time Processing</h3>
+            <p>Optimized for low-latency speech separation in teleconferencing and mobile devices.</p>
+        </div>
+    </div>
+</section>
+
+
+    
+    
+
+  <!-- About Us Section --> 
+<section id="aboutus" style="display: flex; align-items: center; margin: 70px auto; max-width: 800px; background-color: #000000; padding: 30px; border-radius: 12px; box-shadow: 10px 10px 25px orange;">
+    <div style="flex: 1; padding-right: 20px; display: flex; justify-content: center; align-items: center;">
+        <img src="NavTarangDemo.png" alt="Entrix Demo" style="max-width: 100%; height: auto; border-radius: 12px;">
+    </div>
+    <div style="flex: 1; padding-left: 10px;">
+        <h2 style="text-align: center;">About Us</h2>
+        <p style="color: white; text-align: left; font-weight: 200;">NavTarang is an innovative audio processing app that combines <b>navigation </b>("Nav") with <b>audio waves</b> ("Tarang"). <br> <br> Our team specializes in advanced speech separation, offering cutting-edge solutions through our flagship framework, TDANet.</p><br>
+        <p style="color: yellow; text-align: left; font-weight: 200;"><em>Enhance your audio experience with our key features:</em></p>
+        <ul style="padding: 0; list-style-type: none; color: whitesmoke;">
+            <li style="text-align: left;"><strong>Advanced Attention Mechanisms:</strong></li>
+            <li style="text-align: left;"><strong>Efficient Encoder-Decoder Architecture:</strong></li>
+            <li style="text-align: left;"><strong>Real-Time, Low-Latency Processing:</strong></li>
+            <li style="text-align: left;"><strong>Extensible and Adaptable Solutions:</strong></li>
+        </ul>
+    </div>
+</section>
+<section id="contact">
+    <div class="col">
+        <h2>References</h2>
+        <div>
+            <p>
+                <a name="1">[1]</a> Triantafyllos Afouras, Joon Son Chung, Andrew Senior, Oriol Vinyals, and Andrew Zisserman.
+               Deep audio-visual speech recognition. IEEE transactions on pattern analysis and machine intel-
+                ligence, 2018.
+            </p>
+            <p>
+                <a name="2">[2]</a> Efthymios Tzinis, Zhepei Wang, and Paris Smaragdis. Sudo rm-rf: efficient networks for universal
+                audio source separation. In IEEE 30th International Workshop on Machine Learning for Signal
+                Processing (MLSP), pp. 1–6. IEEE, 2020.
+
+            </p>
+            <p>
+                <a name="3">[3]</a> Yi Luo, Zhuo Chen, and Takuya Yoshioka. Dual-path rnn: efficient long sequence modeling for
+                time-domain single-channel speech separation.  In IEEE International Conference on Acoustics,
+                Speech and Signal Processing (ICASSP), pp. 46–50. IEEE, 2020.
+            </p>
+            <p>
+                <a name="4">[4]</a> Cem Subakan, Mirco Ravanelli, Samuele Cornell, Mirko Bronzi, and Jianyuan Zhong. Attention is
+                all you need in speech separation.  In IEEE International Conference on Acoustics, Speech and
+                Signal Processing (ICASSP), pp. 21–25. IEEE, 2021.
+
+            </p>
+            <p>
+                <a name="5">[5]</a> Xiaolin Hu, Kai Li, Weiyi Zhang, Yi Luo, Jean-Marie Lemercier, and Timo Gerkmann.  Speech
+                separation using an asynchronous fully recurrent convolutional neural network. volume 34, pp.
+                22509–22522, 2021.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+ 
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 NavTarang. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+
+<script>
+
+    document.querySelectorAll('.service-icon').forEach(function(icon) {
+        icon.addEventListener('click', function() {
+            // Add the 'clicked' class to trigger the animation
+            icon.classList.add('clicked');
+
+            // Remove the class after the animation completes (600ms)
+            setTimeout(function() {
+                icon.classList.remove('clicked');
+            }, 600);
+        });
+    });
+    
+
+</script>
+</html>
+
