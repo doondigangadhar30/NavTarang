@@ -24,7 +24,7 @@ torchaudio.save("audio2sep.wav", est_sources[:, 1, :].detach().cpu(), 16_000)
 
 ## Results
 
-Our model achieves the following performance on:
+A sampel visual representation of our mode:
 ## Home page
 ![Screenshot_25-10-2024_8525_doondigangadhar30 github io](https://github.com/user-attachments/assets/0490841b-e586-4d7b-b0b5-31b0c36e771d)
 ## Features page
